@@ -1,13 +1,20 @@
 class Pin < ActiveRecord::Base
-  attr_accessible :description
+  attr_accessible :description, :image
+
 
   validates :description, presence: true
+  validates :user_id, presence: true
+  has_attached_file :image, styles: { medium: "320x240>"}  
+  validates_attachment :image, presence: true,
+                            content_type: { content_type: ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'] },
+                            size: { less_than: 5.megabytes }
 
  #find more validations by searching "rails_validations" on Google
 
  belongs_to :user
+ 
 
  #look for relationships of pin-user at "rails_assosications" on rails guides
 
- validates :user_id, presence: true
+ 
 end
