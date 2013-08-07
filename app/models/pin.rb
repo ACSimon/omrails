@@ -13,6 +13,9 @@ class Pin < ActiveRecord::Base
 
  belongs_to :user
  
+def pin_params
+	params.require(:pin).permit(:description, :image)
+end
 
  #look for relationships of pin-user at "rails_assosications" on rails guides
 
