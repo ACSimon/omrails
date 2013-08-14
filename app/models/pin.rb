@@ -1,6 +1,5 @@
 class Pin < ActiveRecord::Base
-  attr_accessible :description, :image
-
+  attr_accessible :description, :image, :image_remote_url
 
   validates :description, presence: true
   validates :user_id, presence: true
@@ -19,5 +18,7 @@ end
 
  #look for relationships of pin-user at "rails_assosications" on rails guides
 
- 
+def image_remote_url=(url_value)
+	self.image = URI.parse(url_value) unless url_value.blank?
+	super
 end
