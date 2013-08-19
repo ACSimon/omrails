@@ -7,6 +7,7 @@ gem 'simple_form'
 gem "paperclip", "~> 3.4.2"
 gem 'thin'
 gem 'aws-sdk'
+gem 'faker'
 
 group :production do
 	gem 'pg'
